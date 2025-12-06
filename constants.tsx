@@ -7,7 +7,7 @@ import {
   Bone, 
   Activity 
 } from 'lucide-react';
-import { ModuleData, BonusData, FaqItem, TestimonialData } from './types';
+import { ModuleData, BonusData, FaqItem, TestimonialData, BenefitData } from './types';
 
 export const PRICE_OLD = 67;
 export const PRICE_NEW = 15;
@@ -74,22 +74,36 @@ export const TRANSFORMATION = [
   "Serás el guardián de la salud natural de tu familia."
 ];
 
-export const BENEFITS = [
+export const BENEFITS: BenefitData[] = [
   {
-    title: "Crear más de 300 remedios paso a paso",
-    desc: "Organizados por síntoma para saber EXACTAMENTE qué hacer en cada situación."
+    title: "Crear Más de 300 Remedios Naturales Paso a Paso",
+    desc: "Organizados por síntoma para que sepas exactamente qué hacer cuando aparece un dolor, una tos o cualquier malestar común. Con ingredientes simples y accesibles.",
+    tags: ["INFUSIONES", "JARABES", "TÓNICOS"]
   },
   {
-    title: "Dominar 20–30 plantas medicinales esenciales",
-    desc: "Qué curan, cómo usarlas, cómo sustituirlas y cómo conservarlas."
+    title: "Dominar 20-30 Plantas Medicinales Esenciales",
+    desc: "Qué curan, cómo conservarlas, dónde conseguirlas y qué hacer si no encontrás la planta original. Plantas de Argentina y Latinoamérica que ya conocés.",
+    tags: ["PLANTAS SECAS", "FRASCOS", "HIERBAS FRESCAS"]
   },
   {
-    title: "Preparar jarabes, ungüentos, tinturas y tónicos",
-    desc: "Explicado de forma simple, clara y segura."
+    title: "Preparar Jarabes, Ungüentos, Tinturas, Cremas y Oleatos",
+    desc: "Todas las formas de preparación explicadas paso a paso: infusiones, decocciones, ungüentos, jarabes, tinturas, baños y vapores. Con dosis seguras y tiempos exactos.",
+    tags: ["UNGÜENTOS", "TINTURAS", "ELIXIRES"]
   },
   {
-    title: "Cuidar a tu familia con seguridad",
-    desc: "Incluye tabla de contraindicaciones para niños, embarazadas e hipertensos."
+    title: "Usar Plantas para Aliviar Dolores, Fortalecer Defensas y Reducir Estrés",
+    desc: "Protocolos organizados por problema: dolores e inflamación, sistema respiratorio, digestivo, piel, sueño, ansiedad, defensas y salud femenina. Todo lo que necesitás saber.",
+    tags: ["DOLORES", "BELLEZA", "DESCANSO"]
+  },
+  {
+    title: "Cultivar Tus Propias Hierbas y Mantener una Botica Natural Sustentable",
+    desc: "Cómo secar, conservar y organizar tus hierbas. Frascos, rótulos, duración real, higiene y cómo armar tu stock de invierno para tener todo siempre a mano.",
+    tags: ["CULTIVO", "ORGANIZACIÓN", "BOTICA"]
+  },
+  {
+    title: "Cuidar Tu Salud y la de Tu Familia con Confianza desde el Conocimiento Ancestral",
+    desc: "Sabiendo cuándo usar remedios naturales y cuándo SÍ ir al médico. Con tabla de contraindicaciones para niños, embarazadas e hipertensos. Uso responsable y seguro.",
+    tags: ["FAMILIA", "SALUD", "CONFIANZA"]
   }
 ];
 
@@ -161,16 +175,58 @@ export const TESTIMONIALS: TestimonialData[] = [
   {
     name: "María Fernández",
     text: "Increíble la cantidad de información. Ya preparé el jarabe para la tos y funcionó de maravilla con mis nietos.",
-    stars: 5
+    stars: 5,
+    verified: true
   },
   {
     name: "Carlos Ruiz",
     text: "Me gusta que es directo al punto. Busco 'dolor de cabeza' y tengo la solución. Nada de teorías aburridas.",
-    stars: 5
+    stars: 5,
+    verified: true
   },
   {
     name: "Ana Gutierrez",
     text: "Los bonos valen más que el precio del libro. La guía de aromaterapia me encantó. ¡Gracias!",
-    stars: 5
+    stars: 5,
+    verified: true
+  }
+];
+
+export const BOTTOM_TESTIMONIALS: TestimonialData[] = [
+  {
+    name: "María Elena V. (Córdoba)",
+    text: "Lo que yo buscaba 👏 Tengo 57 años y quería volver a lo que hacía mi abuela. Ya hice el jarabe de miel y cebolla para mis nietos y funcionó en 2 días 🤧➡️😊. Súper claro y serio, NO es cualquier cosa.",
+    stars: 5,
+    verified: true
+  },
+  {
+    name: "Patricia G. (Lanús)",
+    text: "Me encantó porque te dice cuándo usar lo natural y cuándo ir al médico 🙌. Lo usé para la tos de mi nena y para una irritación mía, todo con cosas que tenía en casa 🌿.",
+    stars: 5,
+    verified: true
+  },
+  {
+    name: "Silvina D. (Rosario)",
+    text: "Socio, esto es oro 💚 Hice el oleato de lavanda y la cremita calmante para mi mamá (articulaciones) y le re bajó la molestia. Amo que tenga 300 recetas, no sabés con cuál arrancar 😅.",
+    stars: 5,
+    verified: true
+  },
+  {
+    name: "Graciela P. (Mar del Plata)",
+    text: "Me pasaba que tomaba la infusión y después comía cualquier cosa 😂. Con el bonus de cocina limpia ya entendí cómo acompañar la inflamación. Se nota que está armado con criterio.",
+    stars: 5,
+    verified: true
+  },
+  {
+    name: "Roxana L. (Barracas)",
+    text: "Lo uso TODOS los días. Ya armé mi botica casera con frascos y etiquetas como dice ahí 😍. Me encanta porque es femenino, ordenado y argentino. Nada rebuscado.",
+    stars: 5,
+    verified: true
+  },
+  {
+    name: "Eduardo R. (papá de dos)",
+    text: "Lo compré para mi esposa pero lo uso yo 😂. El protocolo express para dolor de cabeza me salvó antes de ir a laburar. Claro, rápido y con cosas que tenés en la cocina.",
+    stars: 5,
+    verified: true
   }
 ];

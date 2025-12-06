@@ -23,4 +23,11 @@ export interface TestimonialData {
   name: string;
   text: string;
   stars: number;
+  verified?: boolean;
+}
+
+export interface BenefitData {
+  title: string;
+  desc: string;
+  tags: string[];
 }

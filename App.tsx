@@ -19,7 +19,8 @@ import {
   BENEFITS, 
   BONUSES, 
   FAQS, 
-  TESTIMONIALS, 
+  TESTIMONIALS,
+  BOTTOM_TESTIMONIALS,
   PRICE_OLD, 
   PRICE_NEW, 
   SAVINGS 
@@ -263,13 +264,23 @@ const App: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             {BENEFITS.map((benefit, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-brand-primary/10 p-2 rounded-full shrink-0 mt-1">
-                  <CheckCircle2 className="w-6 h-6 text-brand-primary" />
+              <div key={idx} className="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-4">
+                    <div className="bg-brand-primary/10 p-2 rounded-full shrink-0 mt-1">
+                        <CheckCircle2 className="w-6 h-6 text-brand-primary" />
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-lg md:text-xl mb-2 text-brand-dark">{benefit.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed mb-4">{benefit.desc}</p>
+                    </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-lg md:text-xl mb-2 text-brand-dark">{benefit.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{benefit.desc}</p>
+                {/* Tags Section */}
+                <div className="pl-12 flex flex-wrap gap-2">
+                    {benefit.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className="text-[10px] md:text-xs font-semibold bg-brand-light text-brand-primary px-2 py-1 rounded-md uppercase tracking-wide">
+                            {tag}
+                        </span>
+                    ))}
                 </div>
               </div>
             ))}
@@ -490,7 +501,45 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 17. Footer */}
+      {/* 17. FINAL TESTIMONIALS (Extra) */}
+      <section className="py-20 px-4 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-2">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+            </div>
+            <h2 className="text-2xl font-bold text-gray-800">3.700 familias satisfechas</h2>
+          </div>
+          
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {BOTTOM_TESTIMONIALS.map((t, i) => (
+              <div key={i} className="break-inside-avoid bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                 {/* Stars */}
+                 <div className="flex gap-1 mb-3">
+                   {[...Array(t.stars)].map((_, starI) => (
+                     <Star key={starI} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                   ))}
+                 </div>
+                 {/* Text */}
+                 <p className="text-gray-600 mb-4 leading-relaxed text-sm">"{t.text}"</p>
+                 {/* Author */}
+                 <div className="flex items-center justify-between border-t border-gray-100 pt-3">
+                   <span className="font-bold text-sm text-gray-800">{t.name}</span>
+                   {t.verified && (
+                     <span className="flex items-center gap-1 text-[10px] text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                       <CheckCircle2 className="w-3 h-3" /> Verificado
+                     </span>
+                   )}
+                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 18. Footer */}
       <footer className="bg-gray-900 text-gray-500 py-10 text-center text-xs">
         <div className="max-w-4xl mx-auto px-4">
           <p className="mb-6 leading-relaxed">
