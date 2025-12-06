@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import Button from './components/ui/Button';
 import AccordionItem from './components/Accordion';
+import SalesNotification from './components/SalesNotification';
+import FloatingCTA from './components/FloatingCTA';
 import { 
   MODULES, 
   PAIN_POINTS, 
@@ -36,6 +38,12 @@ const App: React.FC = () => {
   return (
     <div className="font-sans text-gray-800 pb-20 md:pb-0">
       
+      {/* Social Proof Notifications */}
+      <SalesNotification triggerId="offer" />
+      
+      {/* Floating CTA (appears after video section) */}
+      <FloatingCTA triggerId="video-preview" targetId="offer" />
+
       {/* 2. HERO SECTION */}
       <section className="bg-brand-dark text-white relative overflow-hidden pt-12 pb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
@@ -176,7 +184,7 @@ const App: React.FC = () => {
       </section>
 
       {/* 7. VIDEO PREVIEW (Walkthrough) */}
-      <section className="py-16 px-4 bg-brand-dark">
+      <section id="video-preview" className="py-16 px-4 bg-brand-dark">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-8">
             Mirá todo lo que incluye por dentro

@@ -230,3 +230,16 @@ export const BOTTOM_TESTIMONIALS: TestimonialData[] = [
     verified: true
   }
 ];
+
+export const SALES_NOTIFICATIONS = [
+  { name: "Valentina", location: "Buenos Aires, Argentina" },
+  { name: "Camila", location: "CDMX, México" },
+  { name: "Sofía", location: "Santiago, Chile" },
+  { name: "Isabella", location: "Bogotá, Colombia" },
+  { name: "Lucía", location: "Madrid, España" },
+  { name: "Martina", location: "Rosario, Argentina" },
+  { name: "Gabriela", location: "Asunción, Paraguay" },
+  { name: "Mariana", location: "Guadalajara, México" },
+  { name: "Fernanda", location: "Medellín, Colombia" },
+  { name: "Catalina", location: "Valparaíso, Chile" }
+];
