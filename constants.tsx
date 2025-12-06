@@ -1,11 +1,11 @@
 import { 
-  LeafIcon,
-  DropletIcon,
-  MoonIcon,
-  ShieldIcon,
-  FlameIcon,
-  BoneIcon,
-  ActivityIcon
+  Leaf, 
+  Droplet, 
+  Moon, 
+  Shield, 
+  Flame, 
+  Bone, 
+  Activity 
 } from 'lucide-react';
 import { ModuleData, BonusData, FaqItem, TestimonialData } from './types';
 
@@ -18,43 +18,43 @@ export const MODULES: ModuleData[] = [
     title: "Inflamación y Dolores",
     description: "Articulaciones, cervical, rodillas, frío/humedad, dolor muscular.",
     count: 30,
-    icon: ActivityIcon
+    icon: Activity
   },
   {
     title: "Digestión",
     description: "Hinchazón, acidez, hígado cargado, colon irritable, empacho, gases.",
     count: 90,
-    icon: DropletIcon
+    icon: Droplet
   },
   {
     title: "Ansiedad y Sueño",
     description: "Insomnio, estrés, palpitaciones por nervios, pensamientos acelerados.",
     count: 30,
-    icon: MoonIcon
+    icon: Moon
   },
   {
     title: "Defensas y Resfríos",
     description: "Resfríos, gripe, tos seca/con flema, congestión, garganta irritada.",
     count: 60,
-    icon: ShieldIcon
+    icon: Shield
   },
   {
     title: "Metabolismo y Peso",
     description: "Retención, colesterol, azúcar, metabolismo lento, hígado graso.",
     count: 30,
-    icon: FlameIcon
+    icon: Flame
   },
   {
     title: "Dolor Articular y Huesos",
     description: "Artrosis leve, rigidez matinal, circulación, menopausia.",
     count: 30,
-    icon: BoneIcon
+    icon: Bone
   },
   {
     title: "Piel y Circulación",
     description: "Piel seca, irritaciones, manchas, caída del pelo, varices leves.",
     count: 30,
-    icon: LeafIcon
+    icon: Leaf
   }
 ];
 

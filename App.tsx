@@ -361,9 +361,16 @@ const App: React.FC = () => {
                </span>
              </div>
 
-             <Button fullWidth pulse className="mb-4 text-xl py-5 shadow-orange-500/30">
-               DESCARGAR AHORA
-             </Button>
+             <a 
+               href="https://pay.hotmart.com/U103291016R?checkoutMode=10" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="block w-full mb-4"
+             >
+               <Button fullWidth pulse className="text-xl py-5 shadow-orange-500/30 w-full">
+                 DESCARGAR AHORA
+               </Button>
+             </a>
              
              <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-gray-500 mt-6">
                <div className="flex items-center gap-1">
