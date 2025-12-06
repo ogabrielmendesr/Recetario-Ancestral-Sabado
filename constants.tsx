@@ -66,6 +66,14 @@ export const PAIN_POINTS = [
   "Sentís que se perdió el conocimiento ancestral de tu familia."
 ];
 
+export const TRANSFORMATION = [
+  "Tu botiquín será 100% natural y sin químicos.",
+  "Sabrás exactamente qué tomar apenas sientas un síntoma.",
+  "Prepararás tus propios remedios con seguridad y confianza.",
+  "Ahorrarás dinero en farmacia usando ingredientes de tu cocina.",
+  "Serás el guardián de la salud natural de tu familia."
+];
+
 export const BENEFITS = [
   {
     title: "Crear más de 300 remedios paso a paso",
@@ -110,6 +118,10 @@ export const FAQS: FaqItem[] = [
   {
     question: "¿Qué hago si no tengo todas las plantas?",
     answer: "El recetario te enseña cómo sustituir hierbas y utiliza ingredientes accesibles que podés conseguir en cualquier dietética o mercado local."
+  },
+  {
+    question: "¿Cuánto tarda en hacer efecto?",
+    answer: "Depende del remedio, pero muchos alivios sintomáticos (como infusiones digestivas) actúan en minutos. Otros tratamientos requieren constancia de unos días."
   },
   {
     question: "¿Cómo llega el ebook?",
