@@ -7,7 +7,9 @@ import {
   ShieldCheck, 
   AlertTriangle, 
   Gift,
-  Leaf
+  Leaf,
+  Home,
+  Stethoscope
 } from 'lucide-react';
 import Button from './components/ui/Button';
 import AccordionItem from './components/Accordion';
@@ -103,30 +105,61 @@ const App: React.FC = () => {
 
       {/* INTRODUCTION / WHAT IS IT */}
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block p-3 bg-brand-light rounded-full mb-6">
             <BookOpen className="w-8 h-8 text-brand-primary" />
           </div>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-6">
             Recetario Ancestral de Remedios Naturales
           </h2>
-          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
             La guía práctica más completa para cuidar tu bienestar de forma natural. 
             Sin palabras difíciles, sin ingredientes raros.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10">
-              <h3 className="font-bold text-brand-dark mb-2 text-xl">300 Remedios</h3>
-              <p className="text-sm text-gray-600">Organizados por síntoma (dolor → solución directa)</p>
+          <div className="grid md:grid-cols-2 gap-6 text-left">
+            {/* Item 1 */}
+            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-1">
+              <div className="bg-white p-3 rounded-full shrink-0 text-brand-primary shadow-sm">
+                <Home className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-brand-dark mb-1 text-lg">300 Remedios Organizados por Síntoma</h3>
+                <p className="text-sm text-gray-600">(dolor → solución directa)</p>
+              </div>
             </div>
-            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10">
-              <h3 className="font-bold text-brand-dark mb-2 text-xl">Ingredientes Simples</h3>
-              <p className="text-sm text-gray-600">Accesibles que conseguís en cualquier lado</p>
+
+            {/* Item 2 */}
+            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-1">
+              <div className="bg-white p-3 rounded-full shrink-0 text-brand-primary shadow-sm">
+                <Leaf className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-brand-dark mb-1 text-lg">Ingredientes que Conseguís en Cualquier Lado</h3>
+                <p className="text-sm text-gray-600">(sin recetas imposibles)</p>
+              </div>
             </div>
-            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10">
-              <h3 className="font-bold text-brand-dark mb-2 text-xl">Uso Seguro</h3>
-              <p className="text-sm text-gray-600">Advertencias claras y dosis responsables</p>
+
+            {/* Item 3 */}
+            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-1">
+              <div className="bg-white p-3 rounded-full shrink-0 text-brand-primary shadow-sm">
+                <Stethoscope className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-brand-dark mb-1 text-lg">Sabés Cuándo SÍ Llamar al Médico</h3>
+                <p className="text-sm text-gray-600">(uso responsable con advertencias claras)</p>
+              </div>
+            </div>
+
+            {/* Item 4 */}
+            <div className="bg-brand-stone p-6 rounded-xl border border-brand-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-1">
+              <div className="bg-white p-3 rounded-full shrink-0 text-brand-primary shadow-sm">
+                <Gift className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-brand-dark mb-1 text-lg">+ 10 Libros Exclusivos</h3>
+                <p className="text-sm text-gray-600">Aromaterapia, Baños Místicos, Belleza Herbal, Botiquín Infantil, Antiinflamación y más</p>
+              </div>
             </div>
           </div>
         </div>
