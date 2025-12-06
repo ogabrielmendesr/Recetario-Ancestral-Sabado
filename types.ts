@@ -10,6 +10,7 @@ export interface ModuleData {
 export interface BonusData {
   title: string;
   image: string;
+  price: number;
 }
 
 export interface FaqItem {

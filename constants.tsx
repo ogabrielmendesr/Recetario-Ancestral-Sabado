@@ -86,16 +86,16 @@ export const BENEFITS = [
 ];
 
 export const BONUSES: BonusData[] = [
-  { title: "El Arte de la Aromaterapia", image: "https://picsum.photos/seed/aroma/300/400" },
-  { title: "Aromaterapia Fácil en 7 Minutos", image: "https://picsum.photos/seed/oil/300/400" },
-  { title: "SOS 7 días Antiinflamación", image: "https://picsum.photos/seed/food/300/400" },
-  { title: "Guía Herbal para la Mujer Radiante", image: "https://picsum.photos/seed/woman/300/400" },
-  { title: "Botiquín Natural Infantil", image: "https://picsum.photos/seed/child/300/400" },
-  { title: "Conservá tus Hierbas", image: "https://picsum.photos/seed/herbs/300/400" },
-  { title: "Belleza Herbal (piel, pelo y manos)", image: "https://picsum.photos/seed/beauty/300/400" },
-  { title: "Cocina Natural en 10 Minutos", image: "https://picsum.photos/seed/kitchen/300/400" },
-  { title: "Protocolo Express por Síntoma", image: "https://picsum.photos/seed/checklist/300/400" },
-  { title: "Kit de Urgencias Naturales", image: "https://picsum.photos/seed/kit/300/400" }
+  { title: "El Arte de la Aromaterapia", image: "https://picsum.photos/seed/aroma/300/400", price: 7 },
+  { title: "Aromaterapia Fácil en 7 Minutos", image: "https://picsum.photos/seed/oil/300/400", price: 5 },
+  { title: "SOS 7 días Antiinflamación", image: "https://picsum.photos/seed/food/300/400", price: 7 },
+  { title: "Guía Herbal para la Mujer Radiante", image: "https://picsum.photos/seed/woman/300/400", price: 6 },
+  { title: "Botiquín Natural Infantil", image: "https://picsum.photos/seed/child/300/400", price: 6 },
+  { title: "Conservá tus Hierbas", image: "https://picsum.photos/seed/herbs/300/400", price: 4 },
+  { title: "Belleza Herbal (piel, pelo y manos)", image: "https://picsum.photos/seed/beauty/300/400", price: 6 },
+  { title: "Cocina Natural en 10 Minutos", image: "https://picsum.photos/seed/kitchen/300/400", price: 5 },
+  { title: "Protocolo Express por Síntoma", image: "https://picsum.photos/seed/checklist/300/400", price: 6 },
+  { title: "Kit de Urgencias Naturales", image: "https://picsum.photos/seed/kit/300/400", price: 5 }
 ];
 
 export const FAQS: FaqItem[] = [

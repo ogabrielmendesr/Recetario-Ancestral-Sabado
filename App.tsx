@@ -271,14 +271,18 @@ const App: React.FC = () => {
              <p className="text-gray-500 mt-2">Valor Total: <span className="line-through">US$ 57</span> → <span className="text-brand-primary font-bold">GRATIS</span></p>
            </div>
 
-           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-8">
              {BONUSES.map((bonus, idx) => (
-               <div key={idx} className="group cursor-default">
+               <div key={idx} className="group cursor-default flex flex-col">
                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md aspect-[3/4] mb-3 relative">
                    <img src={bonus.image} alt={bonus.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                   <div className="absolute top-2 right-2 bg-brand-accent text-white text-[10px] font-bold px-2 py-0.5 rounded">GRATIS</div>
+                   <div className="absolute top-2 right-2 bg-brand-accent text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">GRATIS</div>
                  </div>
-                 <h4 className="font-bold text-sm text-center text-gray-700 leading-tight">{bonus.title}</h4>
+                 <h4 className="font-bold text-sm text-center text-gray-700 leading-tight mb-1 flex-grow">{bonus.title}</h4>
+                 <div className="text-center">
+                    <span className="text-xs text-gray-400">Valor: </span>
+                    <span className="text-xs text-red-500 line-through font-semibold">US$ {bonus.price}</span>
+                 </div>
                </div>
              ))}
            </div>
