@@ -18,43 +18,43 @@ export const MODULES: ModuleData[] = [
     title: "Inflamación y Dolores",
     description: "Articulaciones, cervical, rodillas, frío/humedad, dolor muscular.",
     count: 30,
-    icon: Activity
+    image: "https://i.imgur.com/s1udgPq.png"
   },
   {
     title: "Digestión",
     description: "Hinchazón, acidez, hígado cargado, colon irritable, empacho, gases.",
     count: 90,
-    icon: Droplet
+    image: "https://i.imgur.com/sTOMQi6.png"
   },
   {
     title: "Ansiedad y Sueño",
     description: "Insomnio, estrés, palpitaciones por nervios, pensamientos acelerados.",
     count: 30,
-    icon: Moon
+    image: "https://i.imgur.com/Spn95Ul.png"
   },
   {
     title: "Defensas y Resfríos",
     description: "Resfríos, gripe, tos seca/con flema, congestión, garganta irritada.",
     count: 60,
-    icon: Shield
+    image: "https://i.imgur.com/lIx8doO.png"
   },
   {
     title: "Metabolismo y Peso",
     description: "Retención, colesterol, azúcar, metabolismo lento, hígado graso.",
     count: 30,
-    icon: Flame
+    image: "https://i.imgur.com/EGyZDRG.png"
   },
   {
     title: "Dolor Articular y Huesos",
     description: "Artrosis leve, rigidez matinal, circulación, menopausia.",
     count: 30,
-    icon: Bone
+    image: "https://i.imgur.com/QFmQKT3.png"
   },
   {
     title: "Piel y Circulación",
     description: "Piel seca, irritaciones, manchas, caída del pelo, varices leves.",
     count: 30,
-    icon: Leaf
+    image: "https://i.imgur.com/VcD4imC.png"
   }
 ];
 
@@ -94,42 +94,66 @@ export const BENEFITS = [
 ];
 
 export const BONUSES: BonusData[] = [
-  { title: "El Arte de la Aromaterapia", image: "https://picsum.photos/seed/aroma/300/400", price: 7 },
-  { title: "Aromaterapia Fácil en 7 Minutos", image: "https://picsum.photos/seed/oil/300/400", price: 5 },
-  { title: "SOS 7 días Antiinflamación", image: "https://picsum.photos/seed/food/300/400", price: 7 },
-  { title: "Guía Herbal para la Mujer Radiante", image: "https://picsum.photos/seed/woman/300/400", price: 6 },
-  { title: "Botiquín Natural Infantil", image: "https://picsum.photos/seed/child/300/400", price: 6 },
-  { title: "Conservá tus Hierbas", image: "https://picsum.photos/seed/herbs/300/400", price: 4 },
-  { title: "Belleza Herbal (piel, pelo y manos)", image: "https://picsum.photos/seed/beauty/300/400", price: 6 },
-  { title: "Cocina Natural en 10 Minutos", image: "https://picsum.photos/seed/kitchen/300/400", price: 5 },
-  { title: "Protocolo Express por Síntoma", image: "https://picsum.photos/seed/checklist/300/400", price: 6 },
-  { title: "Kit de Urgencias Naturales", image: "https://picsum.photos/seed/kit/300/400", price: 5 }
+  { title: "Aromaterapia Fácil en 7 Minutos", image: "https://i.imgur.com/9AhpvPN.png", price: 5 },
+  { title: "Baños Mágicos y Sahumerios", image: "https://i.imgur.com/odmXZeA.png", price: 7 },
+  { title: "SOS 7 días Antiinflamación", image: "https://i.imgur.com/wzghos5.png", price: 7 },
+  { title: "Guía Herbal para la Mujer Radiante", image: "https://i.imgur.com/oIOzdVx.png", price: 6 },
+  { title: "Botiquín Natural Infantil", image: "https://i.imgur.com/8tqJmmv.png", price: 10 },
+  { title: "Conservá tus Hierbas", image: "https://i.imgur.com/SfYZAHE.png", price: 4 },
+  { title: "Belleza Herbal: Piel, Pelo y Manos", image: "https://i.imgur.com/a9N4iAg.png", price: 6 },
+  { title: "Cocina en 10 minutos", image: "https://i.imgur.com/vmYIdzL.png", price: 5 },
+  { title: "Protocolo Express por Síntoma", image: "https://i.imgur.com/2FROdIf.png", price: 6 },
+  { title: "Kit de Urgencias Naturales", image: "https://i.imgur.com/YMgsYr7.png", price: 5 }
 ];
 
 export const FAQS: FaqItem[] = [
   {
-    question: "¿Reemplaza al médico?",
-    answer: "No. Este recetario es una guía complementaria para el bienestar y malestares menores. Siempre debés consultar a un profesional ante síntomas graves o persistentes."
+    question: "¿Esto reemplaza al médico?",
+    answer: "No. Este recetario es una herramienta complementaria para el bienestar cotidiano. Ante síntomas graves, persistentes o dudas, siempre debés consultar a un profesional de la salud."
   },
   {
-    question: "¿Sirve para niños / embarazadas?",
-    answer: "Sí, incluye una sección específica y tablas de seguridad/contraindicaciones claras para niños, embarazadas y personas hipertensas."
+    question: "¿Se puede usar en niños / embarazadas?",
+    answer: "Sí. El libro incluye tablas de seguridad específicas y apartados donde se aclara qué plantas son aptas y cuáles evitar en niños, embarazo y lactancia."
   },
   {
-    question: "¿Qué hago si no tengo todas las plantas?",
-    answer: "El recetario te enseña cómo sustituir hierbas y utiliza ingredientes accesibles que podés conseguir en cualquier dietética o mercado local."
+    question: "¿Y si no tengo todas las plantas?",
+    answer: "No te preocupes. La mayoría de los ingredientes se consiguen en cualquier dietética o mercado. Además, te enseñamos cómo sustituir hierbas si te falta alguna."
   },
   {
-    question: "¿Cuánto tarda en hacer efecto?",
-    answer: "Depende del remedio, pero muchos alivios sintomáticos (como infusiones digestivas) actúan en minutos. Otros tratamientos requieren constancia de unos días."
+    question: "¿Es muy difícil de hacer?",
+    answer: "Para nada. Todas las recetas están explicadas paso a paso, con un lenguaje sencillo y sin términos complicados. Es como seguir una receta de cocina fácil."
   },
   {
-    question: "¿Cómo llega el ebook?",
-    answer: "El acceso es inmediato. Una vez confirmado el pago, recibirás un correo electrónico con el enlace de descarga directa y acceso a la plataforma."
+    question: "¿Cómo me llega el ebook?",
+    answer: "El acceso es inmediato y automático. Una vez confirmado tu pago, recibís un correo electrónico con el enlace de descarga directa a tu celular o computadora."
   },
   {
-    question: "¿Incluye garantía?",
-    answer: "Sí, tenés 30 días de garantía total. Si no estás satisfecho, te devolvemos el 100% de tu dinero sin hacer preguntas."
+    question: "¿Qué hago si no me llega el mail?",
+    answer: "A veces puede ir a la carpeta de 'Spam' o 'Promociones'. Buscalo ahí. Si no lo encontrás, escribinos a soporte y te lo reenviamos al instante."
+  },
+  {
+    question: "¿En qué lo puedo ver?",
+    answer: "Es un archivo digital en formato PDF de alta calidad. Podés leerlo en tu celular, tablet, computadora o incluso imprimirlo si preferís el papel."
+  },
+  {
+    question: "¿Tiene garantía?",
+    answer: "Sí, total. Tenés 30 días para probarlo. Si sentís que no es para vos, nos avisás y te devolvemos el 100% de tu dinero sin preguntas."
+  },
+  {
+    question: "¿Qué pasa si nunca usé plantas medicinales?",
+    answer: "Es ideal para vos. Empezamos desde cero: cómo elegir las plantas, cómo prepararlas y cómo usarlas de forma segura. No necesitás experiencia previa."
+  },
+  {
+    question: "¿Por qué este recetario y no lo gratis de Google?",
+    answer: "En internet hay mucha información contradictoria o peligrosa. Aquí tenés un método organizado, probado y con dosis seguras, ahorrándote tiempo y riesgos."
+  },
+  {
+    question: "¿Cuánto tardan en hacer efecto?",
+    answer: "Depende del caso. Un té digestivo puede aliviarte en 15 minutos, mientras que un tratamiento para la ansiedad puede requerir unos días de constancia para ver cambios profundos."
+  },
+  {
+    question: "¿Los bonus también vienen al instante?",
+    answer: "Sí. Junto con el Recetario Ancestral recibís automáticamente los 10 libros de regalo para descargar en el momento."
   }
 ];
 

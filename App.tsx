@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { 
-  Clock, 
   CheckCircle2, 
   Star, 
   ShieldCheck, 
   AlertTriangle, 
   Gift,
   Leaf,
-  PlayCircle,
   XCircle,
-  ArrowRight
+  ArrowRight,
+  Play
 } from 'lucide-react';
 import Button from './components/ui/Button';
 import AccordionItem from './components/Accordion';
-import StickyCTA from './components/StickyCTA';
 import { 
   MODULES, 
   PAIN_POINTS, 
@@ -28,20 +26,7 @@ import {
 } from './constants';
 
 const App: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState({ minutes: 14, seconds: 59 });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds === 0) {
-          if (prev.minutes === 0) return prev;
-          return { minutes: prev.minutes - 1, seconds: 59 };
-        }
-        return { ...prev, seconds: prev.seconds - 1 };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const scrollToOffer = () => {
     document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
@@ -50,53 +35,55 @@ const App: React.FC = () => {
   return (
     <div className="font-sans text-gray-800 pb-20 md:pb-0">
       
-      {/* 1. Urgency Bar */}
-      <div className="bg-brand-accent text-white text-center py-2 px-4 text-sm font-bold sticky top-0 z-40 shadow-md">
-        <div className="flex items-center justify-center gap-2">
-          <Clock className="w-4 h-4 animate-pulse" />
-          <span>LANZAMIENTO ESPECIAL – Solo por HOY</span>
-          <span className="bg-white text-brand-accent px-2 py-0.5 rounded text-xs ml-1">
-            {String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
-          </span>
-        </div>
-      </div>
-
       {/* 2. HERO SECTION */}
       <section className="bg-brand-dark text-white relative overflow-hidden pt-12 pb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           
-          {/* Social Proof Badge */}
-          <div className="inline-flex items-center gap-2 bg-brand-primary/40 px-4 py-1.5 rounded-full text-brand-light text-sm font-medium mb-6 backdrop-blur-sm border border-brand-light/20">
-            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-            +3.700 familias satisfechas
+          {/* Social Proof Badge - Pill Style */}
+          <div className="flex justify-center mb-8 md:mb-10">
+            <div className="inline-flex items-center gap-3 border border-brand-light/30 bg-brand-primary/20 rounded-full pl-2 pr-6 py-2 backdrop-blur-md shadow-lg hover:bg-brand-primary/30 transition-colors">
+              {/* Faces */}
+              <img 
+                src="https://i.imgur.com/jok3swQ.png" 
+                alt="Clientes felices" 
+                className="h-10 w-auto object-contain"
+              />
+              
+              {/* Stars & Text Column */}
+              <div className="flex flex-col items-start text-left justify-center">
+                <div className="flex gap-0.5 mb-0.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-brand-stone font-semibold text-xs md:text-sm tracking-wide leading-none">
+                  +3.700 familias satisfechas
+                </span>
+              </div>
+            </div>
           </div>
           
           {/* Headline */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-brand-stone">
-            Recuperá el <span className="text-brand-accent italic">Saber Ancestral</span> que resolvía todo en casa.
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8 text-brand-stone max-w-5xl mx-auto">
+            Volvé a tomar el control de <span className="text-brand-accent italic">Tu Salud</span> hoy mismo..<br />
+            <span className="block mt-4 text-xl md:text-3xl font-medium text-brand-light/90">Recuperando el Saber Ancestral que resolvía todo en casa</span>
           </h1>
 
           {/* Product Image */}
-          <div className="flex justify-center mb-8 relative">
-            <div className="absolute inset-0 bg-brand-primary/20 blur-2xl rounded-full transform scale-90"></div>
+          <div className="flex justify-center mb-8">
             <img 
               src="https://i.imgur.com/9twhjyk.png" 
               alt="Portada Recetario Ancestral" 
-              className="relative w-full max-w-[280px] md:max-w-md drop-shadow-2xl hover:scale-105 transition-transform duration-500 rounded-lg"
+              className="w-full max-w-[280px] md:max-w-md drop-shadow-2xl"
             />
           </div>
           
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-brand-light/90 mb-8 max-w-2xl mx-auto leading-relaxed font-light">
-            Tomá el control de tu salud con remedios simples, naturales y seguros.<br/> 
-            <span className="font-semibold text-white">Lo aprendés una vez, lo usás toda la vida.</span>
+          <p className="text-lg md:text-xl text-brand-light/80 mb-8 max-w-2xl mx-auto leading-relaxed font-light px-4">
+             Remedios simples, naturales y seguros al alcance de tu mano.
           </p>
-
-          <Button onClick={scrollToOffer} pulse className="w-full sm:w-auto shadow-orange-900/50">
-            QUIERO MI RECETARIO
-          </Button>
         </div>
       </section>
 
@@ -194,22 +181,36 @@ const App: React.FC = () => {
             Mirá todo lo que incluye por dentro
           </h2>
           
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer bg-black">
-            {/* Thumbnail Placeholder */}
-            <img 
-              src="https://picsum.photos/seed/bookopen/1200/675" 
-              alt="Video demostrativo" 
-              className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
-            />
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-brand-accent/90 p-4 rounded-full shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                <PlayCircle className="w-16 h-16 text-white" />
-              </div>
-            </div>
-            <div className="absolute bottom-4 left-0 right-0 text-center">
-               <span className="text-white/80 text-sm font-medium tracking-wider uppercase">Click para ver el contenido</span>
-            </div>
+          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+             {!isVideoPlaying ? (
+                <div 
+                  className="relative group cursor-pointer"
+                  onClick={() => setIsVideoPlaying(true)}
+                >
+                  <img 
+                    src="https://i.imgur.com/SmfHuwd.png" 
+                    alt="Video demostrativo" 
+                    className="w-full h-auto block opacity-90 group-hover:opacity-100 transition-opacity"
+                  />
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-brand-accent/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-8 h-8 text-white fill-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+             ) : (
+                <div className="w-full bg-black">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    autoPlay
+                    src="https://i.imgur.com/SmfHuwd.mp4"
+                  >
+                    Tu navegador no soporta el elemento de video.
+                  </video>
+                </div>
+             )}
           </div>
         </div>
       </section>
@@ -227,15 +228,26 @@ const App: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MODULES.map((module, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:border-brand-primary/30 hover:shadow-xl transition-all hover:-translate-y-1">
-                <div className="w-12 h-12 bg-brand-light rounded-xl flex items-center justify-center text-brand-primary mb-4">
-                  <module.icon className="w-6 h-6" />
+              <div key={idx} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:border-brand-primary/30 hover:shadow-xl transition-all hover:-translate-y-1 group">
+                {/* Image Section */}
+                <div className="w-full h-48 overflow-hidden bg-gray-100">
+                  <img 
+                    src={module.image} 
+                    alt={module.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-bold text-xl text-brand-dark mb-2">{module.title}</h3>
-                <span className="inline-block px-2 py-1 bg-brand-stone text-xs font-semibold rounded text-gray-500 mb-3">
-                  {module.count} Recetas
-                </span>
-                <p className="text-gray-600 text-sm">{module.description}</p>
+                
+                {/* Content Section */}
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-xl text-brand-dark flex-1 leading-tight">{module.title}</h3>
+                  </div>
+                  <span className="inline-block px-2 py-1 bg-brand-stone text-xs font-semibold rounded text-gray-500 mb-3">
+                    {module.count} Recetas
+                  </span>
+                  <p className="text-gray-600 text-sm">{module.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -274,7 +286,7 @@ const App: React.FC = () => {
            <h2 className="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-4">
              Comprá hoy y llevate <br className="hidden md:block" /> estos regalos exclusivos
            </h2>
-           <p className="text-xl text-gray-500">Valor real: <span className="line-through decoration-red-500 font-semibold">US$ 57</span> → <span className="text-green-600 font-bold">GRATIS HOY</span></p>
+           <p className="text-xl text-gray-500">Valor real: <span className="line-through decoration-red-500 font-semibold">US$ 61</span> → <span className="text-green-600 font-bold">GRATIS HOY</span></p>
         </div>
       </section>
 
@@ -309,12 +321,12 @@ const App: React.FC = () => {
             </div>
             <div className="flex justify-between items-center text-gray-500">
               <span>Pack 10 Bonus Exclusivos</span>
-              <span className="line-through">US$ 57</span>
+              <span className="line-through">US$ 61</span>
             </div>
             <div className="h-px bg-gray-300 my-2"></div>
             <div className="flex justify-between items-center font-bold text-lg text-brand-dark">
               <span>Valor Total</span>
-              <span className="line-through decoration-red-500">US$ 124</span>
+              <span className="line-through decoration-red-500">US$ 128</span>
             </div>
           </div>
         </div>
@@ -345,32 +357,74 @@ const App: React.FC = () => {
                />
              </div>
 
-             {/* Pricing Display */}
-             <div className="flex flex-col items-center justify-center gap-1 mb-8">
-               <span className="text-red-500 font-semibold uppercase text-xs tracking-widest">Precio Hoy</span>
-               <div className="flex items-center gap-4">
-                  <div className="text-gray-400 text-2xl font-medium line-through decoration-red-500">
-                    US$ {PRICE_OLD}
+             {/* Deliverables Checklist */}
+             <div className="max-w-md mx-auto mb-8 text-left space-y-3 px-2">
+                {[
+                  "Guía completa de más de 300 recetas naturales",
+                  "Organizado por síntomas para solución directa",
+                  "10 Libros Exclusivos de Regalo (Valor US$ 61)",
+                  "Ingredientes fáciles de conseguir en casa",
+                  "Explicaciones claras y seguras para toda la familia",
+                  "Acceso inmediato y de por vida al material digital"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <div className="bg-green-100 p-1 rounded-md shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    </div>
+                    <span className="text-gray-700 text-sm md:text-base font-medium leading-tight">{item}</span>
                   </div>
-                  <div className="text-6xl font-bold text-brand-primary">
-                    US$ {PRICE_NEW}
-                  </div>
+                ))}
+                <div className="flex items-start gap-3 pl-1">
+                    <span className="text-gray-500 text-sm md:text-base font-medium leading-tight italic ml-9">y mucho más...</span>
+                </div>
+             </div>
+
+             {/* Pricing Display Redesign */}
+             <div className="flex flex-col items-center justify-center text-center mb-8 mt-6">
+               <h4 className="text-red-500 font-bold text-2xl md:text-3xl mb-1 leading-none">
+                 Precio Regular por Todo:
+               </h4>
+               <div className="text-red-500 text-4xl md:text-5xl font-bold line-through decoration-red-500 mb-6 relative inline-block">
+                 <span className="text-black opacity-20 absolute top-1/2 left-0 w-full h-1 bg-red-500 -rotate-3"></span>
+                 US$ {PRICE_OLD}
                </div>
-               <span className="text-green-600 text-sm font-bold bg-green-50 px-3 py-1 rounded-full mt-2">
-                 Ahorrás US$ {SAVINGS}
-               </span>
+
+               <p className="text-gray-900 font-bold text-lg md:text-xl mb-2 leading-tight">
+                 Precio Especial HOY de Lanzamiento, por solo...
+               </p>
+               
+               <div className="text-[5rem] md:text-[6rem] font-extrabold text-green-500 tracking-tighter leading-none mb-3 drop-shadow-sm">
+                 US$ {PRICE_NEW}
+               </div>
+               
+               <p className="text-gray-800 text-sm md:text-base font-medium max-w-xs mx-auto leading-snug">
+                 <span className="font-bold">APROVECHA AHORA:</span> No encontrarás este precio más adelante.
+               </p>
              </div>
 
              <a 
                href="https://pay.hotmart.com/U103291016R?checkoutMode=10" 
                target="_blank" 
                rel="noopener noreferrer"
-               className="block w-full mb-4"
+               className="block w-full max-w-sm mx-auto mb-6"
              >
-               <Button fullWidth pulse className="text-xl py-5 shadow-orange-500/30 w-full">
-                 DESCARGAR AHORA
+               <Button 
+                 fullWidth 
+                 pulse 
+                 className="!bg-green-500 !hover:bg-green-600 !border-b-4 !border-green-700 text-white text-lg md:text-xl py-4 shadow-xl shadow-green-500/30 w-full uppercase"
+               >
+                 ¡Obtén acceso ahora!
                </Button>
              </a>
+
+             {/* Trust Seal Image */}
+             <div className="flex justify-center mb-6">
+                <img 
+                  src="https://i.imgur.com/yirzFHl.png" 
+                  alt="Compra Segura" 
+                  className="w-full max-w-[300px] object-contain"
+                />
+             </div>
              
              <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-gray-500 mt-6">
                <div className="flex items-center gap-1">
@@ -404,7 +458,8 @@ const App: React.FC = () => {
       {/* 15. FAQ */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-center font-serif text-3xl font-bold mb-10 text-brand-dark">Preguntas Frecuentes</h2>
+          <h2 className="text-center font-serif text-3xl font-bold mb-2 text-brand-dark">¿Tenés dudas?</h2>
+          <p className="text-center text-gray-500 mb-10">Acá respondemos las consultas más comunes</p>
           <div className="space-y-3">
             {FAQS.map((faq, idx) => (
               <AccordionItem key={idx} question={faq.question} answer={faq.answer} />
@@ -450,8 +505,6 @@ const App: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} Recetario Ancestral. Todos los derechos reservados.</p>
         </div>
       </footer>
-
-      <StickyCTA />
     </div>
   );
 };

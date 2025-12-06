@@ -4,7 +4,8 @@ export interface ModuleData {
   title: string;
   description: string;
   count: number;
-  icon: LucideIcon;
+  icon?: LucideIcon;
+  image: string;
 }
 
 export interface BonusData {
