@@ -57,8 +57,15 @@ const SalesNotification: React.FC<SalesNotificationProps> = ({ triggerId }) => {
   return (
     <div className="fixed top-4 left-4 right-4 z-50 md:left-auto md:right-4 md:w-80 pointer-events-none">
       <div className="bg-white rounded-lg shadow-xl p-3 border border-brand-primary/20 flex items-center gap-3 animate-fade-in-down transform transition-all duration-500">
-        <div className="bg-green-100 p-2 rounded-full shrink-0">
-          <ShoppingBag className="w-5 h-5 text-green-600" />
+        <div className="relative shrink-0">
+          <img 
+            src={data.image} 
+            alt={data.name} 
+            className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
+          />
+          <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-1 border-2 border-white">
+             <ShoppingBag className="w-3 h-3 text-white" />
+          </div>
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-bold text-gray-800 truncate">{data.name}</p>

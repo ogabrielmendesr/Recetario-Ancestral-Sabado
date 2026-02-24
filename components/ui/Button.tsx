@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const widthClass = fullWidth ? "w-full" : "";
-  const pulseClass = pulse ? "animate-pulse" : "";
+  const pulseClass = pulse ? "animate-pulse-scale" : "";
 
   return (
     <button 

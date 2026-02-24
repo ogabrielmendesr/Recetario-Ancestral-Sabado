@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   CheckCircle2, 
   Star, 
@@ -8,12 +8,13 @@ import {
   Leaf,
   XCircle,
   ArrowRight,
-  Play
+  Play,
+  Volume2
 } from 'lucide-react';
 import Button from './components/ui/Button';
 import AccordionItem from './components/Accordion';
 import SalesNotification from './components/SalesNotification';
-import FloatingCTA from './components/FloatingCTA';
+import PriceDisplay from './components/PriceDisplay';
 import { 
   MODULES, 
   PAIN_POINTS, 
@@ -25,14 +26,35 @@ import {
   BOTTOM_TESTIMONIALS,
   PRICE_OLD, 
   PRICE_NEW, 
-  SAVINGS 
+  SAVINGS,
+  REMEDY_PREVIEWS
 } from './constants';
 
 const App: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isHeroVideoActive, setIsHeroVideoActive] = useState(false);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToOffer = () => {
     document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleHeroVideoClick = () => {
+    if (heroVideoRef.current) {
+      if (!isHeroVideoActive) {
+        heroVideoRef.current.currentTime = 0;
+        heroVideoRef.current.muted = false;
+        heroVideoRef.current.volume = 1;
+        heroVideoRef.current.play();
+        setIsHeroVideoActive(true);
+      } else {
+        if (heroVideoRef.current.paused) {
+          heroVideoRef.current.play();
+        } else {
+          heroVideoRef.current.pause();
+        }
+      }
+    }
   };
 
   return (
@@ -41,9 +63,6 @@ const App: React.FC = () => {
       {/* Social Proof Notifications */}
       <SalesNotification triggerId="offer" />
       
-      {/* Floating CTA (appears after video section) */}
-      <FloatingCTA triggerId="video-preview" targetId="offer" />
-
       {/* 2. HERO SECTION */}
       <section className="bg-brand-dark text-white relative overflow-hidden pt-12 pb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
@@ -80,13 +99,34 @@ const App: React.FC = () => {
             <span className="block mt-4 text-xl md:text-3xl font-medium text-brand-light/90">Recuperando el Saber Ancestral que resolvía todo en casa</span>
           </h1>
 
-          {/* Product Image */}
-          <div className="flex justify-center mb-8">
-            <img 
-              src="https://i.imgur.com/9twhjyk.png" 
-              alt="Portada Recetario Ancestral" 
-              className="w-full max-w-[280px] md:max-w-md drop-shadow-2xl"
-            />
+          {/* Hero Video */}
+          <div className="relative w-full max-w-lg md:max-w-3xl mx-auto mb-12 group z-20">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 cursor-pointer" onClick={handleHeroVideoClick}>
+              <video 
+                ref={heroVideoRef}
+                src="https://i.imgur.com/l14EGmp.mp4" 
+                className="w-full h-auto object-cover bg-black"
+                autoPlay
+                loop
+                muted={!isHeroVideoActive}
+                playsInline
+                controls={false}
+              />
+              
+              {/* Overlay for "Click to Listen" */}
+              {!isHeroVideoActive && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 hover:bg-black/20 transition-all">
+                  <div className="animate-pulse flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+                    <div className="w-14 h-14 bg-brand-accent/90 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(217,119,6,0.6)] mb-3 backdrop-blur-sm border-2 border-white/50">
+                      <Volume2 className="w-7 h-7 text-white fill-white" />
+                    </div>
+                    <div className="bg-black/70 text-white px-5 py-2 rounded-full backdrop-blur-md font-bold text-xs tracking-wide border border-white/30 shadow-lg flex items-center gap-2">
+                       <Play className="w-3 h-3 fill-current" /> HACÉ CLIC PARA ESCUCHAR
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           
           {/* Subheadline */}
@@ -190,36 +230,72 @@ const App: React.FC = () => {
             Mirá todo lo que incluye por dentro
           </h2>
           
-          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
-             {!isVideoPlaying ? (
-                <div 
-                  className="relative group cursor-pointer"
-                  onClick={() => setIsVideoPlaying(true)}
-                >
-                  <img 
-                    src="https://i.imgur.com/SmfHuwd.png" 
-                    alt="Video demostrativo" 
-                    className="w-full h-auto block opacity-90 group-hover:opacity-100 transition-opacity"
-                  />
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-brand-accent/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                      <Play className="w-8 h-8 text-white fill-white ml-1" />
+          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black mb-12">
+             <img src="https://i.imgur.com/xDs1xJl.gif" alt="Preview del libro" className="w-full h-auto" />
+          </div>
+
+          <div className="max-w-3xl mx-auto text-left text-brand-light/90 space-y-8">
+            <div className="bg-white/5 p-6 rounded-xl border border-white/10">
+              <p className="text-lg mb-4 font-medium">
+                Sigue la guía paso a paso para preparar el remedio en casa. 
+              </p>
+              <p className="mb-4">
+                Esta disposición intuitiva te permite encontrar y elaborar rápidamente remedios eficaces para los distintos problemas que deseas tratar.
+              </p>
+              <p className="mb-4">
+                Supongamos que has contraído un gusano parásito del que, obviamente, quieres deshacerte cuanto antes. 
+              </p>
+              <p className="mb-4">
+                Ve a «la estantería» del aparato digestivo... y busca algunas recetas que puedan ayudarte a resolver el problema. 
+              </p>
+              <p className="mb-4 font-semibold text-brand-accent">
+                ¡El nogal negro, con acción antiparasitaria, parece una buena idea!
+              </p>
+              <p>
+                Como puedes ver aquí, lo encontrarás en la página 76. Y aquí está el remedio ya preparado. Solo tardarás 5 minutos en hacerlo.
+              </p>
+            </div>
+
+            <h3 className="text-2xl font-serif font-bold text-white text-center mt-12 mb-8">
+              Estos son solo algunos de los 300 remedios que encontrarás en tu nueva botica
+            </h3>
+
+            <div className="space-y-12">
+              {REMEDY_PREVIEWS.map((remedy, idx) => (
+                <div key={idx} className="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-brand-primary/50 transition-colors">
+                  <div className="p-6 md:p-8">
+                    <h4 className="text-xl font-bold text-brand-accent mb-4">{remedy.title}</h4>
+                    <div className="flex flex-col md:flex-row gap-6 items-start">
+                      <div className="flex-1 space-y-4 text-gray-300 leading-relaxed">
+                        {remedy.description.split('\n\n').map((paragraph, pIdx) => (
+                          <p key={pIdx}>{paragraph}</p>
+                        ))}
+                      </div>
+                      {remedy.image && (
+                        <div className="w-full md:w-1/3 shrink-0">
+                          <img 
+                            src={remedy.image} 
+                            alt={remedy.title} 
+                            className="w-full rounded-lg shadow-lg border border-white/20"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-             ) : (
-                <div className="w-full bg-black">
-                  <video
-                    className="w-full h-auto"
-                    controls
-                    autoPlay
-                    src="https://i.imgur.com/SmfHuwd.mp4"
-                  >
-                    Tu navegador no soporta el elemento de video.
-                  </video>
-                </div>
-             )}
+              ))}
+            </div>
+
+            <div className="text-center mt-16 bg-brand-primary/20 p-8 rounded-2xl border border-brand-primary/30">
+              <p className="text-xl font-medium text-white mb-6">
+                Todo eso es solo una pequeña muestra de lo que encontrarás dentro del libro.
+              </p>
+              <img 
+                src="https://i.imgur.com/mgaZCy3.png" 
+                alt="300 remedios más" 
+                className="max-w-xs mx-auto mb-4 rounded-lg shadow-xl"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -370,7 +446,7 @@ const App: React.FC = () => {
              {/* Product Image */}
              <div className="flex justify-center mb-8">
                <img 
-                 src="https://i.imgur.com/9twhjyk.png" 
+                 src="https://i.imgur.com/8FxFjdu.png" 
                  alt="Pack Completo" 
                  className="w-full max-w-[260px] drop-shadow-2xl hover:scale-105 transition-transform duration-500" 
                />
@@ -399,50 +475,29 @@ const App: React.FC = () => {
              </div>
 
              {/* Pricing Display Redesign */}
-             <div className="flex flex-col items-center justify-center text-center mb-8 mt-6">
-               <h4 className="text-red-500 font-bold text-2xl md:text-3xl mb-1 leading-none">
-                 Precio Regular por Todo:
-               </h4>
-               <div className="text-red-500 text-4xl md:text-5xl font-bold line-through decoration-red-500 mb-6 relative inline-block">
-                 <span className="text-black opacity-20 absolute top-1/2 left-0 w-full h-1 bg-red-500 -rotate-3"></span>
-                 US$ {PRICE_OLD}
-               </div>
-
-               <p className="text-gray-900 font-bold text-lg md:text-xl mb-2 leading-tight">
-                 Precio Especial HOY de Lanzamiento, por solo...
-               </p>
-               
-               <div className="text-[5rem] md:text-[6rem] font-extrabold text-green-500 tracking-tighter leading-none mb-3 drop-shadow-sm">
-                 US$ {PRICE_NEW}
-               </div>
-               
-               <p className="text-gray-800 text-sm md:text-base font-medium max-w-xs mx-auto leading-snug">
-                 <span className="font-bold">APROVECHA AHORA:</span> No encontrarás este precio más adelante.
-               </p>
+             <div className="mb-8 mt-6">
+               <PriceDisplay basePrice={PRICE_NEW} />
              </div>
 
              <a 
                href="https://pay.hotmart.com/U103291016R?checkoutMode=10" 
                target="_blank" 
                rel="noopener noreferrer"
-               className="block w-full max-w-sm mx-auto mb-6"
+               className="block w-full max-w-lg mx-auto mb-6"
              >
                <Button 
                  fullWidth 
                  pulse 
-                 className="!bg-green-500 !hover:bg-green-600 !border-b-4 !border-green-700 text-white text-lg md:text-xl py-4 shadow-xl shadow-green-500/30 w-full uppercase"
+                 className="!bg-[#22c55e] !hover:bg-[#16a34a] !border-b-4 !border-[#15803d] text-white text-base md:text-lg py-5 !rounded-md shadow-xl shadow-green-500/30 w-full uppercase font-black tracking-wide"
                >
-                 ¡Obtén acceso ahora!
+                 ¡SÍ! QUIERO MEJORAR MI SALUD
+                 <span className="block text-xs md:text-sm font-normal mt-1 opacity-90 normal-case">Acceso Inmediato • Garantía de 30 Días</span>
                </Button>
              </a>
 
-             {/* Trust Seal Image */}
-             <div className="flex justify-center mb-6">
-                <img 
-                  src="https://i.imgur.com/yirzFHl.png" 
-                  alt="Compra Segura" 
-                  className="w-full max-w-[300px] object-contain"
-                />
+             {/* Payment Icons */}
+             <div className="flex justify-center mb-6 mt-4 px-4">
+                <img src="https://i.imgur.com/jFmLmv1.png" alt="Métodos de Pago" className="w-full max-w-md object-contain" />
              </div>
              
              <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-gray-500 mt-6">
@@ -502,9 +557,16 @@ const App: React.FC = () => {
           </div>
 
           <div className="block">
-             <Button onClick={scrollToOffer} variant="primary" className="text-xl px-10 py-5 shadow-2xl shadow-brand-accent/30 w-full md:w-auto">
-               QUIERO ACCEDER YA <ArrowRight className="ml-2 w-5 h-5 inline" />
-             </Button>
+             <a 
+               href="https://pay.hotmart.com/U103291016R?checkoutMode=10" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="inline-block w-full md:w-auto"
+             >
+               <Button variant="primary" className="text-xl px-10 py-5 shadow-2xl shadow-brand-accent/30 w-full md:w-auto">
+                 QUIERO ACCEDER YA <ArrowRight className="ml-2 w-5 h-5 inline" />
+               </Button>
+             </a>
           </div>
         </div>
       </section>

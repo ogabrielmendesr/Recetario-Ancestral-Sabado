@@ -22,6 +22,15 @@
                 accent: '#d97706', // Warm amber/orange for CTA
                 stone: '#f5f5f4', // Paper background
               }
+            },
+            animation: {
+              'pulse-scale': 'pulse-scale 2s infinite',
+            },
+            keyframes: {
+              'pulse-scale': {
+                '0%, 100%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(1.05)' },
+              }
             }
           }
         }
@@ -62,11 +71,13 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-brand-stone text-gray-800 antialiased">
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=839131342207609&ev=PageView&noscript=1"
     /></noscript>
     <div id="root"></div>
-  </body>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>
